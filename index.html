@@ -4,47 +4,35 @@ local html = [[
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A large amount of content to test performance.">
+    <meta name="description" content="A page that writes 'cat' 1000 times.">
     <meta name="author" content="Your Name">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Performance Test</title>
+    <title>Cat 1000 Times</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            text-align: center;
-            background-color: #f0f0f0;
-        }
-        header {
-            background-color: #ffeb3b;
             padding: 20px;
-        }
-        header h1 {
-            margin: 0;
-            color: #333;
+            background-color: #f0f0f0;
+            text-align: center;
         }
         .content {
-            padding: 20px;
-        }
-        .content div {
-            margin: 10px;
-            padding: 10px;
             background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Performance Test</h1>
+        <h1>Cat 1000 Times</h1>
     </header>
     <div class="content">
 ]]
 
-for i = 1, 100000 do
-    html = html .. '<div>This is a test content block number ' .. i .. '</div>\n'
+for i = 1, 1000 do
+    html = html .. 'cat<br>\n'
 end
 
 html = html .. [[

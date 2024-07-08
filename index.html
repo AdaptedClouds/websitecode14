@@ -1,44 +1,71 @@
-local html = [[
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A page that writes 'cat' 1000 times.">
-    <meta name="author" content="Your Name">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Cat 1000 Times</title>
+    <title>Random YouTube Video Player</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
             text-align: center;
+            margin-top: 50px;
         }
-        .content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        iframe {
+            width: 640px;
+            height: 360px;
+            margin: 20px auto;
+            display: block;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Cat 1000 Times</h1>
-    </header>
-    <div class="content">
-]]
+    <h1>Random YouTube Video Player</h1>
+    <button id="newVideoBtn">Play Random Video</button>
+    <div id="player"></div>
 
-for i = 1, 1000 do
-    html = html .. 'cat<br>\n'
-end
+    <script>
+        // Function to generate a random YouTube video ID
+        function getRandomVideoId() {
+            // Replace with your own list of video IDs
+            const videoIds = [
+                'dQw4w9WgXcQ', // Rick Astley - Never Gonna Give You Up (Rickroll)
+                'jNQXAC9IVRw', // Nyan Cat
+                '9bZkp7q19f0', // PSY - GANGNAM STYLE
+                '2zNSgSzhBfM', // Evolution of Dance
+                'oHg5SJYRHA0'  // Rick Astley - Together Forever
+            ];
+            const randomIndex = Math.floor(Math.random() * videoIds.length);
+            return videoIds[randomIndex];
+        }
 
-html = html .. [[
-    </div>
+        // Function to load a new random video
+        function loadRandomVideo() {
+            const videoId = getRandomVideoId();
+            const playerDiv = document.getElementById('player');
+            playerDiv.innerHTML = `
+                <iframe 
+                    width="640" 
+                    height="360" 
+                    src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+                    frameborder="0" 
+                    allowfullscreen>
+                </iframe>
+            `;
+        }
+
+        // Event listener for the button click
+        document.getElementById('newVideoBtn').addEventListener('click', loadRandomVideo);
+
+        // Load a random video when the page first loads
+        window.onload = loadRandomVideo;
+    </script>
 </body>
 </html>
-]]
-
-print(html)

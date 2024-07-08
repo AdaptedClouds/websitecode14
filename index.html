@@ -3,69 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random YouTube Video Player</title>
+    <title>Random Scary Stories Generator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        iframe {
-            width: 640px;
-            height: 360px;
-            margin: 20px auto;
-            display: block;
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
         }
         button {
+            margin-top: 20px;
             padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
+            font-size: 1rem;
             cursor: pointer;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <h1>Random YouTube Video Player</h1>
-    <button id="newVideoBtn">Play Random Video</button>
-    <div id="player"></div>
+    <div class="container">
+        <h1>Random Scary Stories Generator</h1>
+        <p id="story"></p>
+        <button onclick="generateStory()">Generate Story</button>
+    </div>
 
     <script>
-        // Function to generate a random YouTube video ID
-        function getRandomVideoId() {
-            // Replace with your own list of video IDs
-            const videoIds = [
-                'dQw4w9WgXcQ', // Rick Astley - Never Gonna Give You Up (Rickroll)
-                'jNQXAC9IVRw', // Nyan Cat
-                '9bZkp7q19f0', // PSY - GANGNAM STYLE
-                '2zNSgSzhBfM', // Evolution of Dance
-                'oHg5SJYRHA0'  // Rick Astley - Together Forever
-            ];
-            const randomIndex = Math.floor(Math.random() * videoIds.length);
-            return videoIds[randomIndex];
+        // Array of scary stories
+        const stories = [
+            "In the middle of the night, a child's laughter echoes through the empty hallways.",
+            "A hiker gets lost in the woods and hears whispers of his own name from the shadows.",
+            "A phone rings, showing an unknown number. The voice on the other end speaks in a language you've never heard before.",
+            "An old mirror reflects a figure standing behind you, but when you turn around, there's no one there.",
+            "The abandoned house on the hill has its lights turned on every night, despite no one living there for years.",
+            "A doll that was left in the attic begins to move on its own, following you around the house.",
+            "During a camping trip, strange symbols appear carved into the trees overnight.",
+            "The radio in the car picks up a distress call from a ship that sank 50 years ago.",
+            "A photo taken with friends shows an extra person standing in the background, but no one remembers seeing them.",
+            "You wake up to find muddy footprints leading from your bed to the window, but it hasn't rained in days.",
+            "Your reflection in the mirror blinks before you do.",
+            "You receive a text from a friend who died last week, saying 'I'm still here.'",
+            "The children's laughter in the playground at night doesn't sound quite human.",
+            "You find a diary hidden in the basement detailing events that haven't happened yet.",
+            "A trail of blood leads up to your front door, but there's no one outside.",
+            "Your pet stares at the corner of the room every night, growling at something you can't see.",
+            "You receive a letter from your future self, warning you not to go to a certain place next week.",
+            "A mysterious fog descends on the town, and people begin to disappear one by one.",
+            "Your reflection starts doing things you're not doing.",
+            "You find a hidden room in your house filled with old photographs of people you've never seen before.",
+            "You wake up to find someone else's eyes staring back at you in the mirror.",
+            "Every night at midnight, a figure appears at the end of your bed, whispering your name.",
+            "Your childhood imaginary friend starts appearing in your dreams as an adult, asking for help.",
+            "You find a journal in your attic detailing your daily activities, but it's written in someone else's handwriting.",
+            "You receive a package containing a doll that looks exactly like you, with a note saying 'Let's switch places.'",
+            "The painting in your bedroom changes every night to depict a gruesome scene from your dreams.",
+            "You find a hidden camera in your house that has been recording you for years.",
+            "A stranger approaches you on the street, handing you a photo of your own funeral.",
+            "Your reflection stops mimicking your movements and starts making its own.",
+            "You receive a text from yourself with a warning about a future event that comes true the next day.",
+            "A mysterious voice on the radio predicts your every move.",
+            "You wake up to find your family staring at you, claiming you've been asleep for weeks.",
+            "You discover a door in your basement that wasn't there yesterday, leading to a room filled with old toys.",
+            "Your shadow starts moving independently of you, showing actions you haven't done.",
+            "You find a box buried in your backyard containing items that belonged to someone who disappeared years ago.",
+            "Every night, you hear scratching sounds coming from inside your closet, but there's nothing inside when you check.",
+            "You receive an email from an unknown sender with attachments of photos taken from inside your own house.",
+            "A strange symbol appears on your hand overnight and begins to spread.",
+            "You find a journal detailing the lives of your ancestors, with an ominous warning about a curse that still affects your family.",
+            "Your dreams start merging with reality, making it hard to distinguish between the two.",
+            "You receive a letter from your past self, warning you about a decision you'll regret in the future.",
+            "A mirror in your house shows a different room every time you look into it.",
+            "You wake up in a hospital with no memory of how you got there, and the nurses avoid making eye contact with you.",
+            "The clock in your house starts counting down from 24 hours, and you have no idea what will happen when it reaches zero.",
+            "You find a hidden passageway in your attic leading to a room that doesn't appear on any floor plan.",
+            "You receive a phone call from your own number, and when you answer, you hear your own voice speaking a different language.",
+            "You discover a diary in your grandmother's handwriting detailing events that haven't happened yet, but are starting to come true.",
+            "A strange fog surrounds your house every night, and people who enter it never come out.",
+            "You receive a package containing a doll that looks exactly like your childhood self, with a note saying 'Remember me?'",
+            "The power goes out in your neighborhood, and when it comes back on, all the clocks in your house are displaying the same wrong time.",
+            "You find a stack of letters in your attic from someone claiming to be your future self, asking for help to change the future.",
+            "Your pet starts acting strangely, staring at a corner of the room and growling at something you can't see.",
+            "You receive a message from an unknown number with a photo of your own reflection, but it's not showing up in any mirror.",
+            "A strange voice starts narrating your actions every day, predicting things before they happen.",
+            "You find an old diary in your attic detailing events that happened to you as a child, but written from the perspective of someone else.",
+            "You wake up in a hospital bed with no memory of how you got there, and the doctors refuse to tell you anything about your condition.",
+            "Your reflection in the mirror starts showing a different facial expression than yours.",
+            "You receive a text message from your own number, saying 'Don't trust anyone.'",
+            "A figure appears at the end of your bed every night, watching you sleep without saying a word.",
+            "You find an old photograph hidden in your basement that shows you standing next to a stranger you've never met.",
+            "You wake up one morning to find all the doors and windows in your house unlocked, despite remembering locking them the night before."
+        ];
+
+        // Function to generate a random story
+        function generateStory() {
+            const randomIndex = Math.floor(Math.random() * stories.length);
+            document.getElementById('story').textContent = stories[randomIndex];
         }
-
-        // Function to load a new random video
-        function loadRandomVideo() {
-            const videoId = getRandomVideoId();
-            const playerDiv = document.getElementById('player');
-            playerDiv.innerHTML = `
-                <iframe 
-                    width="640" 
-                    height="360" 
-                    src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
-                    frameborder="0" 
-                    allowfullscreen>
-                </iframe>
-            `;
-        }
-
-        // Event listener for the button click
-        document.getElementById('newVideoBtn').addEventListener('click', loadRandomVideo);
-
-        // Load a random video when the page first loads
-        window.onload = loadRandomVideo;
     </script>
 </body>
 </html>

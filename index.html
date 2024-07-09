@@ -3,64 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Haunting of Blackwood Manor</title>
+    <title>Cat Photo Gallery</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #111;
-            color: #eee;
-            line-height: 1.6;
-            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
-        h1, h2 {
-            color: #f00;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border: 5px solid #ccc;
+            border-radius: 10px;
         }
         h1 {
             text-align: center;
-        }
-        p {
-            text-indent: 50px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #888;
+            color: #333;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>The Haunting of Blackwood Manor</h1>
-        <h2>Chapter 1: The Arrival</h2>
-        <p>It was a stormy night when Sarah and her family arrived at Blackwood Manor. The ancient house stood ominously against the dark sky, its silhouette a foreboding presence on the hill. As the family approached the manor, the wind howled through the trees, whispering secrets of the past.</p>
-        <p>Sarah's husband, John, had inherited the manor from a distant relative they had never met. Despite its dilapidated state, they were eager to start anew. Little did they know, the manor held dark secrets that were waiting to be uncovered.</p>
-        
-        <h2>Chapter 2: Unsettling Discoveries</h2>
-        <p>The first night in the manor was restless. Strange noises echoed through the halls, and Sarah felt an uneasy presence in the house. She awoke to the sound of footsteps outside their bedroom door, but when she checked, no one was there.</p>
-        <p>The next morning, they began exploring the manor. In the attic, Sarah found an old diary belonging to a woman named Eliza Blackwood. The diary detailed Eliza's descent into madness, plagued by visions of shadowy figures and whispers that drove her to the brink.</p>
-        
-        <h2>Chapter 3: The Shadows</h2>
-        <p>As days turned into weeks, the disturbances grew more frequent. Sarah saw shadows moving in the corners of her vision, and John heard disembodied voices calling his name. Their children, Emily and James, began to have night terrors, waking up screaming in the middle of the night.</p>
-        <p>One evening, while Sarah was reading Eliza's diary, the temperature in the room dropped suddenly. A chilling wind swept through the house, extinguishing the candles and plunging the room into darkness. Sarah felt a cold hand touch her shoulder, and she turned to see a shadowy figure standing behind her.</p>
-        
-        <h2>Chapter 4: The Haunting Intensifies</h2>
-        <p>Desperate for answers, Sarah delved deeper into the history of Blackwood Manor. She discovered that the house was built on cursed land, and every family that had lived there had met a tragic end. The spirits of those who perished in the manor were said to be trapped within its walls, seeking vengeance on the living.</p>
-        <p>One night, Sarah and John decided to confront the spirits. They gathered in the parlor, armed with candles and a Ouija board. As they attempted to communicate with the spirits, the planchette moved on its own, spelling out a chilling message: "LEAVE OR DIE."</p>
-        
-        <h2>Chapter 5: The Final Stand</h2>
-        <p>Determined to protect her family, Sarah sought the help of a local historian who specialized in the paranormal. He revealed that the only way to break the curse was to find and destroy a hidden object that bound the spirits to the manor. This object, he said, was Eliza Blackwood's locket.</p>
-        <p>With renewed resolve, Sarah and John searched the manor for the locket. They finally found it hidden behind a loose brick in the fireplace. As Sarah held the locket, a powerful force knocked her to the ground, and the spirits of Blackwood Manor manifested around them, their faces twisted in rage.</p>
-        
-        <h2>Chapter 6: The Escape</h2>
-        <p>In a desperate bid to save her family, Sarah threw the locket into the fire. The spirits let out an unearthly wail as the locket melted, and the house began to shake violently. Sarah and John grabbed their children and fled the manor as it crumbled behind them.</p>
-        <p>As they stood outside, watching Blackwood Manor collapse, Sarah felt a sense of relief wash over her. The curse was broken, and the spirits were finally at peace. Though the manor was gone, the haunting memories would stay with them forever. They vowed never to speak of that night again, but the whispers of Blackwood Manor would echo in their minds, a reminder of the darkness they had faced and survived.</p>
-        
-        <div class="footer">
-            <p>&copy; 2024 The Haunting of Blackwood Manor</p>
+    <div>
+        <h1>Cat Photo Gallery</h1>
+        <div class="gallery">
+            <link href="cat1.webp" alt="Cute Cat 1">
+            <link href="cat2.webp" alt="Cute Cat 2">
+            <link href="cat3.jpg" alt="Cute Cat 3">
+            <link href="cat4.jpg" alt="Cute Cat 4">
         </div>
     </div>
 </body>
